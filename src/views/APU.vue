@@ -1,9 +1,14 @@
 <template>
   <v-container>
     <div class="cuadroapu">
-      <h2>ANÁLISIS DE PRECIOS UNITARIOS</h2>
+      <h3>ANÁLISIS DE PRECIOS UNITARIOS</h3>
       <v-divider></v-divider>
-      <v-btn @click="materiales">ir a Materiales</v-btn>
+      <v-btn class="ma-2" color="indigo" outlined small @click="regresar">
+        Regresar
+      </v-btn>
+      <v-btn lass="ma-2" color="indigo" outlined small @click="materiales"
+        >ir a Materiales</v-btn
+      >
     </div>
   </v-container>
 </template>
@@ -14,6 +19,9 @@ export default {
   methods: {
     materiales() {
       this.$router.push("/cuadromateriales");
+    },
+    regresar() {
+      this.$router.push("/editarpresupuesto");
     },
   },
 };

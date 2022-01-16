@@ -1,11 +1,29 @@
 <template>
   <v-container>
-    <h1>Items</h1>
+    <h3>MATERIALES</h3>
+    <br />
+    <v-btn class="ma-2" color="indigo" outlined small @click="regresar">
+      Regresar
+    </v-btn>
 
+    <br />
     <form @submit.prevent="agregarItem()">
       <h3>Agregar</h3>
-      <input type="text" class="form-control" my-2 placeholder="ItemId" v-model="itemnew.itemId" />
-      <input type="text" class="form-control" my-2 placeholder="Descripcion" v-model="itemnew.descripcion" />
+
+      <input
+        type="text"
+        class="form-control"
+        my-2
+        placeholder="ItemId"
+        v-model="itemnew.itemId"
+      />
+      <input
+        type="text"
+        class="form-control"
+        my-2
+        placeholder="Descripcion"
+        v-model="itemnew.descripcion"
+      />
       <v-btn small type="submit">Agregar</v-btn>
     </form>
 
@@ -22,8 +40,10 @@
           <tr v-for="item in cotItem" :key="item._id">
             <td>{{ item.itemId }}</td>
             <td>{{ item.descripcion }}</td>
-            <td> 
-              <v-btn class="danger" small @click="eliminarItem(item._id)">Eliminar</v-btn>
+            <td>
+              <v-btn class="danger" small @click="eliminarItem(item._id)"
+                >Eliminar</v-btn
+              >
             </td>
           </tr>
         </tbody>
@@ -49,20 +69,15 @@
 -->
 
 <script>
-
-
 export default {
   data() {
     return {
       cotItem: [],
       itemnew: { itemId: "", descripcion: "" },
-
     };
   },
 
-  components: {
-
-  },
+  components: {},
 
   created() {
     this.listarcotItems();
@@ -79,20 +94,17 @@ export default {
           console.log(e.response);
         });
     },
-    about1() {
-      this.$router.push("/about");
+    regresar() {
+      this.$router.push("/cuadroapu");
     },
 
     agregarItem() {
-      this.axios.post('/nuevo-item',this.itemnew)
-      .then((res) => {
+      this.axios.post("/nuevo-item", this.itemnew).then((res) => {
         this.cotItem.push(res.data);
         this.itemnew.itemId = "";
         this.itemnew.descripcion = "";
-
       });
     },
-
   },
 };
 </script>

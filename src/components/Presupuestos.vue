@@ -15,12 +15,7 @@
           </v-file-input>
         </v-col>
         <v-col cols="5">
-          <v-btn
-            class="ma-2"
-            color="indigo"
-            outlined
-            small
-            @click="editarInformacion()"
+          <v-btn class="ma-2" color="indigo" outlined small @click="regresar()"
             >REGRESAR</v-btn
           >
           <v-btn
@@ -28,7 +23,7 @@
             color="indigo"
             outlined
             small
-            @click="editarcuadrocotizacion"
+            @click="editarpresupuesto"
           >
             EDITAR CANTIDADES</v-btn
           >
@@ -171,11 +166,11 @@ export default {
   }),
 
   methods: {
-    editarcuadrocotizacion() {
-      console.log("...editando cotización...");
-      this.$router.push("/editarcuadrocotiza");
+    editarpresupuesto() {
+      console.log("...editando presupuesto...");
+      this.$router.push("/editarpresupuesto");
     },
-    editarInformacion() {
+    regresar() {
       this.$router.push("/cotizaciones");
     },
   },

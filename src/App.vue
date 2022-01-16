@@ -1,10 +1,8 @@
 <template>
   <v-main>
-    <v-app-bar app color="primary" dark> </v-app-bar>
     <div id="nav">
       <v-app id="app">
         <div class="mx-4 flex">
-          <!--        <router-view name="header" /> -->
           <router-view name="sidebar" />
           <router-view name="footer" />
           <router-view />

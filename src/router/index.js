@@ -6,47 +6,42 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
+    name: "Login",
+    components: {
+      default: () =>
+        import(/* webpackChunkName: "ingreso" */ "../views/Login.vue"),
+      footer: () => import("../components/Footer.vue"),
+    },
+  },
+  {
+    path: "/home",
     name: "Home",
     components: {
       default: () => import(/* webpackChunkName: "Home" */ "../views/Home.vue"),
-      //      header: () => import('../components/Header.vue'),
       sidebar: () => import("../components/SideNavigation.vue"),
       footer: () => import("../components/Footer.vue"),
     },
   },
   {
-    path: "/ingreso",
-    name: "Ingreso",
-    components: {
-      default: () =>
-        import(/* webpackChunkName: "ingreso" */ "../views/Ingreso.vue"),
-      //      header: () => import('../components/Header.vue'),
-      sidebar: () => import("../components/SideNavigation.vue"),
-      footer: () => import("../components/Footer.vue"),
-    },
-  },
-  {
-    path: "/cuadrocotiza",
-    name: "CuadroCotiza",
+    path: "/presupuestos",
+    name: "Presupuestos",
     components: {
       default: () =>
         import(
-          /* webpackChunkName: "cuadro" */ "../components/CuadroCotizacion.vue"
+          /* webpackChunkName: "cuadro" */ "../components/Presupuestos.vue"
         ),
-      //      header: () => import('../components/Header.vue'),
       sidebar: () => import("../components/SideNavigation.vue"),
       footer: () => import("../components/Footer.vue"),
     },
   },
   {
-    path: "/editarcuadrocotiza",
-    name: "EditarCuadroCotizacion",
+    path: "/editarpresupuesto",
+    name: "EditarPresupuesto",
     components: {
       default: () =>
         import(
-          /* webpackChunkName: "editcuadro" */ "../components/EditarCuadroCotizacion.vue"
+          /* webpackChunkName: "editcuadro" */ "../components/EditarPresupuestos.vue"
         ),
-      //      header: () => import('../components/Header.vue'),
       sidebar: () => import("../components/SideNavigation.vue"),
       footer: () => import("../components/Footer.vue"),
     },
@@ -57,7 +52,6 @@ const routes = [
     components: {
       default: () =>
         import(/* webpackChunkName: "apu" */ "../components/Cotizaciones.vue"),
-      //      header: () => import('../components/Header.vue'),
       sidebar: () => import("../components/SideNavigation.vue"),
       footer: () => import("../components/Footer.vue"),
     },
@@ -67,7 +61,6 @@ const routes = [
     name: "APU",
     components: {
       default: () => import(/* webpackChunkName: "apu" */ "../views/APU.vue"),
-      //      header: () => import('../components/Header.vue'),
       sidebar: () => import("../components/SideNavigation.vue"),
       footer: () => import("../components/Footer.vue"),
     },
@@ -78,7 +71,6 @@ const routes = [
     components: {
       default: () =>
         import(/* webpackChunkName: "materiales" */ "../views/Materiales.vue"),
-      //      header: () => import('../components/Header.vue'),
       sidebar: () => import("../components/SideNavigation.vue"),
       footer: () => import("../components/Footer.vue"),
     },
@@ -91,7 +83,6 @@ const routes = [
         import(
           /* webpackChunkName: "pruebas" */ "../views/pruebacuadrocrud.vue"
         ),
-      //      header: () => import('../components/Header.vue'),
       sidebar: () => import("../components/SideNavigation.vue"),
       footer: () => import("../components/Footer.vue"),
     },
@@ -102,7 +93,6 @@ const routes = [
     components: {
       default: () =>
         import(/* webpackChunkName: "About" */ "../views/About.vue"),
-      //      header: () => import('../components/Header.vue'),
       sidebar: () => import("../components/SideNavigation.vue"),
       footer: () => import("../components/Footer.vue"),
     },

@@ -2,10 +2,10 @@
   <v-container>
     <h3 class="center">INFORMACIÓN COTIZACIONES</h3>
     <br />
-    <v-btn class="ma-2" color="indigo" outlined small @click="inicio">
+    <v-btn class="ma-2" color="indigo" outlined small @click="regresar">
       REGRESAR
     </v-btn>
-    <v-btn class="ma-2" color="indigo" outlined small @click="editarcotiza">
+    <v-btn class="ma-2" color="indigo" outlined small @click="presupuestos">
       EDITAR CUADRO CANTIDADES</v-btn
     >
     <template>
@@ -465,11 +465,11 @@ export default {
       }
       this.close();
     },
-    editarcotiza() {
-      this.$router.push("/cuadrocotiza");
+    presupuestos() {
+      this.$router.push("/presupuestos");
     },
-    inicio() {
-      this.$router.push("/");
+    regresar() {
+      this.$router.push("/home");
     },
   },
 };

@@ -1,24 +1,25 @@
 <template>
   <v-container>
-    <v-app-bar app class="py-2" dark fixed elevate-on-scroll clipped-left>
+    <v-app-bar dark app class="py-2" fixed elevate-on-scroll clipped-left>
       <v-app-bar-nav-icon
         class="black"
         @click="drawer = !drawer"
       ></v-app-bar-nav-icon>
       <v-app-bar-title class="d-none d-sm-block"
-        ><h6 class="font-weight-bold red--text text-center">
+        ><h6 class="red--text text-center">
           SISTEMA DE GESTIÓN DE OBRAS DE CONSTRUCCIÓN
         </h6>
       </v-app-bar-title>
       <v-spacer></v-spacer>
+      <v-btn icon @click="salir()">
+        <v-icon>mdi-export</v-icon>
+      </v-btn>
     </v-app-bar>
     <v-navigation-drawer app v-model="drawer" fixed bottom clipped>
       <v-list nav dense class="py-0">
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title class="text-h6">
-              ¡SPIDER!
-            </v-list-item-title>
+            <v-list-item-title class="text-h6"> ¡SPIDER! </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -31,7 +32,7 @@
           link
         >
           <v-list>
-            <v-list-item href="/">
+            <v-list-item href="/home">
               <v-list-item-icon>
                 <v-icon> mdi-home</v-icon>
               </v-list-item-icon>
@@ -48,7 +49,7 @@
                 </v-list-item-icon>
               </v-list-item>
 
-              <v-list-item href="/cuadrocotiza">
+              <v-list-item href="/presupuestos">
                 <v-list-item-title> Presupuestos </v-list-item-title>
                 <v-list-item-icon>
                   <v-icon> mdi-cash-multiple </v-icon>
@@ -101,6 +102,9 @@ export default {
   components: {},
   methods: {
     inicio() {
+      this.$router.push("/home");
+    },
+    salir() {
       this.$router.push("/");
     },
   },

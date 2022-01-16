@@ -2,10 +2,6 @@
   <v-container>
     <div class="home">
       <h2>PRESENTACIÓN</h2>
-
-      <v-btn class="ma-2" color="indigo" outlined small @click="login()">
-        INGRESAR
-      </v-btn>
       <v-btn class="ma-2" color="indigo" outlined small @click="cotizaciones()">
         COTIZACIONES
       </v-btn>
@@ -28,14 +24,11 @@ export default {
   name: "Home",
   components: {},
   methods: {
-    login() {
-      this.$router.push("/ingreso");
-    },
     cotizaciones() {
       this.$router.push("/cotizaciones");
     },
     presupuestos() {
-      this.$router.push("/cuadrocotiza");
+      this.$router.push("/presupuestos");
     },
     apus() {
       this.$router.push("/cuadroapu");

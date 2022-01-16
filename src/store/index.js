@@ -14,14 +14,14 @@ export default new Vuex.Store({
   },
   actions: {
     async getItemscotizacion({ commit }) {
-      const peticion = await fetch("http://localhost:3000/itemscotizacion/");
+      const peticion = await fetch("http://localhost:4000/itemscotizacion/");
       const data = await peticion.json();
       console.log(data);
       commit("setItemscotizacion", data);
     },
 
     async deleteItemcotizacion({ commit }, itemscotizacion) {
-      const peticion = await fetch("http://localhost:3000/itemscotizacion/", {
+      const peticion = await fetch("http://localhost:4000/itemscotizacion/", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +31,7 @@ export default new Vuex.Store({
     },
 
     async setItemscotizacion({ commit }, item) {
-      const peticion = await fetch("http://localhost:3000/itemscotizacion/", {
+      const peticion = await fetch("http://localhost:4000/itemscotizacion/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,7 +41,7 @@ export default new Vuex.Store({
     },
 
     async editItemscotizacion({ commit }, item) {
-      const peticion = await fetch("http://localhost:3000/itemscotizacion/", {
+      const peticion = await fetch("http://localhost:4000/itemscotizacion/", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

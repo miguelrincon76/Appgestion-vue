@@ -117,8 +117,9 @@
       <template v-slot:item.actions="{ item }">
         <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
         <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
-        <v-btn class="ma-1" color="secundary"
-          >APU <v-icon small class="mr-2"> mdi-checkbox-marked-circle </v-icon>
+        <v-btn class="ma-1" color="secundary" @click="apu"
+          >APU
+          <v-icon small class="mr-2"> mdi-checkbox-marked-circle </v-icon>
         </v-btn>
       </template>
     </v-data-table>
@@ -340,7 +341,10 @@ export default {
       return costodirecto;
     },
     regresar() {
-      this.$router.push("/cuadrocotiza");
+      this.$router.push("/presupuestos");
+    },
+    apu() {
+      this.$router.push("/cuadroapu");
     },
   },
 };
