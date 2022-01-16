@@ -69,7 +69,6 @@
       show-select
       checkbox-color="red ligthen-4"
       mobile-breakpoint="md"
-      options="sortBy:[]"
       class="elevation-1"
       :search="search"
     >
@@ -216,7 +215,7 @@
 </template>
 
 <script>
-import storecotizaciones from "../store/tbl_Cotizacion";
+import storecotizaciones from "../store/cotizaciones";
 
 export default {
   data: () => ({

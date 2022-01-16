@@ -154,12 +154,12 @@
 </template>
 
 <script>
-import storeindirectos from "../store/tbl_Indirectos";
-import storeimpuestos from "../store/tbl_Impuestos";
-//import storecotizacion from "../store/tbl_Cotizacion.js";
+import storeindirectos from "../store/indirectos";
+import storeimpuestos from "../store/impuestos";
+//import storecotizacion from "../store/cotizaciones.js";
 //import store from "../store/tbl_items.js";
 
-import storeitems from "../store/index.js";
+import storeitems from "../store/presupuestos";
 
 export default {
   data: () => ({

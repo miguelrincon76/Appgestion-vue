@@ -127,7 +127,7 @@
 </template>
 
 <script>
-import storeitems from "../store/index.js";
+import storeitems from "../store/presupuestos";
 
 export default {
   data: () => ({
