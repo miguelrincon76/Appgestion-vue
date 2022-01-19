@@ -3,7 +3,7 @@ import morgan from "morgan";
 import { createAdmin, createRoles } from "./libs/initialSetup";
 import authRoutes from "./routes/auth.routes";
 import userRoutes from "./routes/user.routes";
-import productRoutes from "./routes/products.routes";
+import materialRoutes from "./routes/materials.routes";
 
 //const materialRoute = require("./routes/material.routes");
 //const cotizacionRoute = require("./routes/cotizacion.routes");
@@ -46,7 +46,7 @@ class Server {
     this.app.use(router);
     this.app.use("/api/auth", authRoutes);
     this.app.use("/api/users", userRoutes);
-    this.app.use("/api/products", productRoutes);
+    this.app.use("/api/materials", materialRoutes);
 
     //this.app.use(serverR.router);
     //this.app.use("/api/materiales", materialRoute);
