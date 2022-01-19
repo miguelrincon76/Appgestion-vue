@@ -1,4 +1,4 @@
-import express from "express";
+let express = require("express");
 import morgan from "morgan";
 import { createAdmin, createRoles } from "./libs/initialSetup";
 import authRoutes from "./routes/auth.routes";
@@ -11,6 +11,11 @@ import materialRoutes from "./routes/materials.routes";
 const mongoose = require("mongoose");
 const database = require("./database/db");
 const cors = require("cors");
+var corsOptions = {
+  origin: "*", //reemplazar con dominio
+  optionsSuccessStatus: 200, //some legacy browsers (IE11, varios SmartTV) choke on 204
+};
+
 class Server {
   //constructor
   constructor() {
@@ -24,7 +29,8 @@ class Server {
     //Indicar que las solicitudes http se trabajará en JSON
     this.app.use(morgan("dev"));
     this.app.use(express.json());
-    this.app.use(cors());
+    this.app.use(cors(corsOptions));
+
     this.app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
     /**
      *

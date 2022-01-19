@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "Sistema Gestión Obras- Módulo de Presupuetario",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js --exec babel-node "
