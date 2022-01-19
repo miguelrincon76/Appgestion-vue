@@ -1,30 +1,32 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-var itemSchema = new Schema({
+const itemSchema = new Schema(
+  {
     itemId: {
-        type: String,
-        required: [true, 'Campo obligatorio']
+      type: String,
+      required: [true, "Campo obligatorio"],
     },
     descripcion: {
-        type: String,
-        required: [true, 'Nombre obligatorio']
+      type: String,
+      required: [true, "Nombre obligatorio"],
     },
     unidad: {
-        type: String,
+      type: String,
     },
     cantidad: {
-        type: Number,
+      type: Number,
     },
     valorunit: {
-        type: Number,
+      type: Number,
     },
     valortotal: {
-        type: Number,
+      type: Number,
     },
+  },
+  {
+    collection: "itemscotizacion",
+  }
+);
 
-}, {
-    collection: 'itemscotizacion'
-});
-
-module.exports = mongoose.model('Item', itemSchema);
+module.exports = mongoose.model("Item", itemSchema);

@@ -1,13 +1,13 @@
 //Importar express
-let express = require("express");
+import express from "express";
 import morgan from "morgan";
 import { createAdmin, createRoles } from "./libs/initialSetup";
-import authRoutes from "./routers/auth.routes";
-import userRoutes from "./routers/user.routes";
-//const serverRouter = require("./routers/serverRouter");
+import authRoutes from "./routes/auth.routes";
+import userRoutes from "./routes/user.routes";
+import productRoutes from "./routes/products.routes";
 
-const materialRoute = require("./routers/material.route");
-const cotizacionRoute = require("./routers/cotizacion.route");
+const materialRoute = require("./routes/material.routes");
+const cotizacionRoute = require("./routes/cotizacion.routes");
 
 //Importar mongoose
 const mongoose = require("mongoose");
@@ -48,11 +48,12 @@ class Server {
     //añadir las rutas al servidor
     //this.app.use(serverR.router);
     this.app.use(router);
-
     this.app.use("/api/auth", authRoutes);
-    this.app.use("/api", userRoutes);
-    this.app.use("/materiales", materialRoute);
-    this.app.use("/cotizaciones", cotizacionRoute);
+    this.app.use("/api/users", userRoutes);
+    this.app.use("/api/products", productRoutes);
+    this.app.use("/api/materiales", materialRoute);
+    this.app.use("/api/cotizaciones", cotizacionRoute);
+
     //Levantar el servidor/correr el servidor
     this.app.listen(this.app.get("port"), () => {
       console.log("Servidor corriendo por el puerto => ", this.app.get("port"));
@@ -65,12 +66,13 @@ class Server {
       .connect(database.db, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        // useCreateIndex: true,
       })
       .then(() => {
         console.log("Conexión a BD con éxito");
       })
       .catch((err) => {
-        console.error("Error de conexión:", err);
+        console.error("Error de conexión a DB:", err);
       });
   }
 }

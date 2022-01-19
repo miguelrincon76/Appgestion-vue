@@ -1,7 +1,7 @@
 {
   "name": "servidor",
   "version": "1.0.1",
-  "description": "Sistema Gestión Obras- Módulo de cotización",
+  "description": "Sistema Gestión Obras- Módulo de Presupuetario",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

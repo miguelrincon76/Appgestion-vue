@@ -1,4 +1,3 @@
-
 import Role from "../models/Role";
 import User from "../models/User";
 
@@ -6,13 +5,16 @@ import bcrypt from "bcryptjs";
 
 export const createRoles = async () => {
   try {
+    // Count Documents
     const count = await Role.estimatedDocumentCount();
+
+    // check for existing roles
     if (count > 0) return;
+    // Create default Roles
     const values = await Promise.all([
       new Role({ name: "user" }).save(),
-      new Role({ name: "moderator" }).save(),
+      new Role({ name: "budgeter" }).save(),
       new Role({ name: "admin" }).save(),
-      new Role({ name: "budgetary" }).save(),
     ]);
     console.log(values);
   } catch (error) {
@@ -24,7 +26,7 @@ export const createAdmin = async () => {
   // check for an existing admin user
   const user = await User.findOne({ email: "admin@localhost" });
   // get roles _id
-  const roles = await Role.find({ name: { $in: ["admin", "moderator"] } });
+  const roles = await Role.find({ name: { $in: ["admin", "budgeter"] } });
 
   if (!user) {
     // create a new admin user

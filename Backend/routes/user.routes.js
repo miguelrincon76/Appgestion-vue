@@ -15,26 +15,17 @@ router.post(
 );
 router.post(
   "/users",
-  [
-    authJwt.verifyToken,
-    authJwt.isAdmin,
-  ],
+  [authJwt.verifyToken, authJwt.isAdmin],
   usersCtrl.getUsers
 );
 router.put(
   "/update:id",
-  [
-    authJwt.verifyToken,
-    authJwt.isAdmin,
-  ],
+  [authJwt.verifyToken, authJwt.isAdmin],
   usersCtrl.updateUser
 );
 router.delete(
   "/delete:id",
-  [
-    authJwt.verifyToken,
-    authJwt.isAdmin,
-  ],
+  [authJwt.verifyToken, authJwt.isAdmin],
   usersCtrl.deleteUser
 );
 
