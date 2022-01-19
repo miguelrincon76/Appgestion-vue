@@ -24,4 +24,4 @@ const materialSchema = new Schema(
   }
 );
 
-export default model("material", materialSchema);
+export default model("Material", materialSchema);

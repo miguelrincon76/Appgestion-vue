@@ -4,9 +4,13 @@
   "description": "Sistema Gestión Obras- Módulo de Presupuetario",
   "main": "index.js",
   "type": "module",
+  "engines": {
+    "node": "16.13.2",
+    "npm": "8.1.2"
+  },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js --exec babel-node "
+    "dev": "nodemon index.js --exec babel-node"
   },
   "keywords": [
     "backend"
@@ -23,7 +27,8 @@
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.7",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "x": "^0.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",

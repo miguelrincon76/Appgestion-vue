@@ -16,7 +16,7 @@ router.post(
 
 router.put(
   "/:materialId",
-  [authJwt.verifyToken, authJwt.isBudgeter],
+  [authJwt.verifyToken, authJwt.isAdmin],
   materialsCtrl.updateMaterialById
 );
 
