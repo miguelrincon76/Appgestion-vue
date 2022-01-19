@@ -1,9 +1,9 @@
 let express = require("express");
 import morgan from "morgan";
-import { createAdmin, createRoles } from "./libs/initialSetup";
-import authRoutes from "./routes/auth.routes";
-import userRoutes from "./routes/user.routes";
-import materialRoutes from "./routes/materials.routes";
+import { createAdmin, createRoles } from "../libs/initialSetup";
+import authRoutes from "@/routes/auth.routes";
+import userRoutes from "@/routes/user.routes";
+import materialRoutes from "@/routes/materials.routes";
 
 //const materialRoute = require("./routes/material.routes");
 //const cotizacionRoute = require("./routes/cotizacion.routes");
