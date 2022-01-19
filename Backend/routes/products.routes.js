@@ -16,7 +16,7 @@ router.post(
 
 router.put(
   "/:productId",
-  [authJwt.verifyToken, authJwt.isAdmin],
+  [authJwt.verifyToken, authJwt.isBudgeter],
   productsCtrl.updateProductById
 );
 
