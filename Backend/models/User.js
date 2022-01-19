@@ -1,4 +1,3 @@
-
 import { Schema, model } from "mongoose";
 import bcrypt from "bcryptjs";
 const userSchema = new Schema(
@@ -6,14 +5,21 @@ const userSchema = new Schema(
     username: {
       type: String,
       unique: true,
+      required: true,
+      min: 6,
+      max: 255,
     },
     email: {
       type: String,
       unique: true,
+      required: true,
+      min: 6,
+      max: 255,
     },
     password: {
       type: String,
-      require: true,
+      required: true,
+      minlength: 6,
     },
     roles: [
       {
