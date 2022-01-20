@@ -3,14 +3,14 @@
   "version": "1.0.1",
   "description": "Sistema Gestión Obras- Módulo de Presupuetario",
   "main": "index.js",
-  "type": "module",
   "engines": {
     "node": "16.13.2",
     "npm": "8.1.2"
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js --exec babel-node"
+    "dev": "nodemon index.js --exec babel-node",
+    "build": "babel src --out-dir build"
   },
   "keywords": [
     "backend"
@@ -18,6 +18,7 @@
   "author": "Miguel Angel Rincon G., Anderson Rubio",
   "license": "ISC",
   "dependencies": {
+    "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "bcryptjs": "^2.4.3",
     "connect-history-api-fallback": "^1.6.0",
