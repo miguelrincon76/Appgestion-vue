@@ -32,7 +32,7 @@ export const signUp = async (req, res) => {
     return res.status(200).json({ token });
   } catch (error) {
     console.log(error);
-    return res.status(500).jason(error);
+    return res.status(500).json(error);
   }
 };
 export const signIn = async (req, res) => {

@@ -3,56 +3,85 @@
     <div class="ingreso">
       <h2>FORMULARIO DE INGRESO</h2>
       <v-divider></v-divider>
-    <div class="container">
+      <div class="container">
         <div class="card card-container">
-            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-            <p id="profile-name" class="profile-name-card"></p>
-            
-            <!-- login form -->
-            <form class="form-signin" v-on:submit.prevent="login" >
-                <span id="reauth-email" class="reauth-email"></span>
-                <input type="email" id="inputEmail" class="form-control" name="email" label="Contraseña" placeholder="Email address" autoComplete="email" v-model='usuario' required autofocus>
-                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" autoComplete="current-password" v-model="password" required>
-                <div id="remember" class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Recuerdame
-                    </label>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Ingresar</button>
-            </form><!-- /form -->
-            <b-alert show variant="warning" v-if="error">{{error_msg}}</b-alert>
-            <a href="#" class="forgot-password">
-                Olvidaste la contraseña?
-            </a>
-        </div><!-- /card-container -->
-    </div><!-- /container -->
+          <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+          <img
+            id="profile-img"
+            class="profile-img-card"
+            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+          />
+          <p id="profile-name" class="profile-name-card"></p>
+
+          <!-- login form -->
+          <form class="form-signin" v-on:submit.prevent="login(usuario)">
+            <span id="reauth-email" class="reauth-email"></span>
+            <input
+              type="email"
+              id="inputEmail"
+              class="form-control"
+              name="email"
+              label="Contraseña"
+              placeholder="Email address"
+              autoComplete="email"
+              v-model="usuario.email"
+              required
+              autofocus
+            />
+            <input
+              type="password"
+              id="inputPassword"
+              class="form-control"
+              name="password"
+              placeholder="Password"
+              autoComplete="current-password"
+              v-model="usuario.password"
+              required
+            />
+            <div id="remember" class="checkbox">
+              <label>
+                <input type="checkbox" value="remember-me" /> Recuerdame
+              </label>
+            </div>
+            <button
+              class="btn btn-lg btn-primary btn-block btn-signin"
+              type="submit"
+            >
+              Ingresar
+            </button>
+          </form>
+          <!-- /form -->
+          <b-alert show variant="warning" v-if="error">{{ error_msg }}</b-alert>
+          <a href="#" class="forgot-password"> Olvidaste la contraseña? </a>
+        </div>
+        <!-- /card-container -->
       </div>
+      <!-- /container -->
     </div>
   </v-container>
 </template>
 
-
-
 <script>
 import { Apiurl } from "../services/apiusuarios";
 import axios from "axios";
+import createStore from "../store/index";
+import { mapActions } from "vuex";
 
 export default {
   name: "Login",
   components: {},
   data: function () {
     return {
-      usuario: "",
-      password: "",
+      usuario: { email: "", password: "" },
       error: false,
       error_msg: "",
     };
   },
   methods: {
-    login() {
-      let user = { usuario: this.usuario, password: this.password };
+    ...mapActions(["login"]),
+    /*       let user = { usuario: this.usuario, password: this.password };
       axios.post(`${Apiurl}/api/auth/signin`, user).then((data) => {
+        
         //este if else esta cambiado hasta que se comunique bien con el servidor
         if (data.data.message === "Usuario o contraseña incorrecta") {
           this.error = true;
@@ -61,8 +90,7 @@ export default {
         } else {
           console.log(data.data.message);
         }
-      });
-    },
+      }); */
   },
 };
 </script>
