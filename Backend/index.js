@@ -1,14 +1,15 @@
 //Importar express
-let express = require("express");
+import express from "express";
 import morgan from "morgan";
 import { createAdmin, createRoles } from "./libs/initialSetup";
 import authRoutes from "./routes/auth.routes";
 import userRoutes from "./routes/user.routes";
-//const serverRouter = require("./routers/serverRouter");
 
 import materialRoute from "./routes/materials.routes";
-
 //const cotizacionRoute = require("./routers/cotizacion.route");
+
+require("dotenv").config();
+//console.log(process.env);
 
 //Importar mongoose
 const mongoose = require("mongoose");
@@ -32,11 +33,8 @@ class Server {
     this.app.use(express.json());
     this.app.use(cors());
     this.app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-    /**
-     *
-     * ******************Rutas**********************
-     *
-     * ******/
+
+    //Rutas*
     const router = express.Router();
     router.get("/", (req, res) => {
       console.log("Nueva conexión");
@@ -44,16 +42,13 @@ class Server {
         message: "¡ CORRIENDO SERVIDOR MODULO DE COTIZACION APPGESTION !",
       });
     });
-    //const serverR = new serverRouter.default();
 
-    //añadir las rutas al servidor
-    //this.app.use(serverR.router);
     this.app.use(router);
-
     this.app.use("/api/auth", authRoutes);
     this.app.use("/api", userRoutes);
     this.app.use("/materiales", materialRoute);
     //this.app.use("/cotizaciones", cotizacionRoute);
+
     //Levantar el servidor/correr el servidor
     this.app.listen(this.app.get("port"), () => {
       console.log("Servidor corriendo por el puerto => ", this.app.get("port"));

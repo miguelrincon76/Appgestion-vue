@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js --exec babel-node",
-    "build": "babel src --out-dir build"
+    "build": "babel ./ --out-dir build"
   },
   "keywords": [
     "backend"
@@ -18,8 +18,6 @@
   "author": "Miguel Angel Rincon G., Anderson Rubio",
   "license": "ISC",
   "dependencies": {
-    "babel": "^6.23.0",
-    "babel-cli": "^6.26.0",
     "bcryptjs": "^2.4.3",
     "connect-history-api-fallback": "^1.6.0",
     "cors": "^2.8.5",
@@ -32,9 +30,10 @@
     "x": "^0.1.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.15.7",
-    "@babel/core": "^7.16.0",
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.10",
     "@babel/preset-env": "^7.16.0",
+    "babel-cli": "^6.26.0",
     "babel-core": "^7.0.0-bridge.0",
     "nodemon": "^2.0.14"
   }
