@@ -12,7 +12,18 @@
   </v-main>
 </template>
 
-<script></script>
+<script>
+import { mapActions } from "vuex";
+
+export default {
+  methods: {
+    ...mapActions(["leerToken"]),
+  },
+  created() {
+    this.leerToken();
+  },
+};
+</script>
 
 <style lang="scss">
 #app {

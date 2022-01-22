@@ -1,6 +1,8 @@
 {
   "name": "appgestionvue",
   "version": "0.1.0",
+  "author": "Miguel Angel Rincon G., Anderson Rubio",
+  "description": "Sistema Gestión Obras- Módulo de Presupuetos",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

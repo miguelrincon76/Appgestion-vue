@@ -69,6 +69,9 @@
 -->
 
 <script>
+import { mapState } from "vuex";
+import { Apiurl } from "../services/apiusuarios";
+
 export default {
   data() {
     return {
@@ -76,14 +79,28 @@ export default {
       itemnew: { itemId: "", descripcion: "" },
     };
   },
-
+  computed: {
+    ...mapState(["token"]),
+  },
   components: {},
 
-  created() {
-    this.listarcotItems();
-  },
-
   methods: {
+    async datosProtegidos() {
+      try {
+        const res = await fetch(`${Apiurl}/api/materials`, {
+          headers: {
+            "Content-Type": "application/json",
+            "x-access-token": this.token,
+          },
+        });
+        const dataDB = await res.json();
+        console.log(dataDB);
+        // commit("setToken", resDB.token);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
     listarcotItems() {
       this.axios
         .get("/item")
@@ -106,5 +123,9 @@ export default {
       });
     },
   },
+    created() {
+    this.datosProtegidos();
+  },
+
 };
 </script>

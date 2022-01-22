@@ -15,9 +15,8 @@ const createStore = new Vuex.Store({
   },
   actions: {
     async login({ commit }, usuario) {
-      console.log(usuario);
       try {
-        const res = await fetch(`${Apiurl}/api/auth/signin`, {
+        const res = await fetch(`${Apiurl}/api/auth/signin?`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -25,10 +24,21 @@ const createStore = new Vuex.Store({
           body: JSON.stringify(usuario),
         });
         const resDB = await res.json();
-        console.log(res.data.token);
+        commit("setToken", resDB.token);
+        localStorage.setItem("token", resDB.token);
       } catch (error) {
         console.log(error);
       }
+    },
+    leerToken({ commit }) {
+      if (localStorage.getItem("token")) {
+        commit("setToken", localStorage.getItem("token"));
+      } else {
+        commit("setToken", null);
+      }
+    },
+    register() {
+      console.log("registrandose");
     },
   },
   modules: {},

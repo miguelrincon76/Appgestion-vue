@@ -1,6 +1,8 @@
 //Importar express
 import express from "express";
 import morgan from "morgan";
+import pkg from "../package.json";
+
 import { createAdmin, createRoles } from "./libs/initialSetup";
 import authRoutes from "./routes/auth.routes";
 import userRoutes from "./routes/user.routes";
@@ -23,12 +25,12 @@ class Server {
   constructor() {
     createRoles();
     createAdmin();
-
     this.conectarBD();
     this.app = express();
     //Indicar el puerto por el que se ejecutará el servidor
     this.app.set("port", process.env.PORT || 4000);
     //Indicar que las solicitudes http se trabajará en JSON
+    this.app.set("pkg", pkg);
     this.app.use(morgan("dev"));
     this.app.use(express.json());
     this.app.use(cors());
@@ -39,14 +41,18 @@ class Server {
     router.get("/", (req, res) => {
       console.log("Nueva conexión");
       res.status(200).json({
-        message: "¡ CORRIENDO SERVIDOR MODULO DE COTIZACION APPGESTION !",
+        Project: this.app.get("pkg").name,
+        Author: this.app.get("pkg").author,
+        Description: this.app.get("pkg").description,
+        Version: this.app.get("pkg").version,
+        Message: "¡CORRIENDO SERVIDOR... APPGESTION - MODULO DE COTIZACION!",
       });
     });
 
     this.app.use(router);
     this.app.use("/api/auth", authRoutes);
-    this.app.use("/api", userRoutes);
-    this.app.use("/materiales", materialRoute);
+    this.app.use("/api/users", userRoutes);
+    this.app.use("/api/materials", materialRoute);
     //this.app.use("/cotizaciones", cotizacionRoute);
 
     //Levantar el servidor/correr el servidor

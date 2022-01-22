@@ -1,58 +1,65 @@
 <template>
   <v-container>
-    <div class="ingreso">
-      <h2>FORMULARIO DE INGRESO</h2>
+    <div class="registro">
+      <h2>FORMULARIO DE REGISTRO</h2>
       <v-divider></v-divider>
       <div class="container">
         <div class="card card-container">
-          <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
           <img
             id="profile-img"
             class="profile-img-card"
             src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
           />
           <p id="profile-name" class="profile-name-card"></p>
-
-          <!-- login form -->
-          <form class="form-signin" v-on:submit.prevent="login(usuario)">
-            <span id="reauth-email" class="reauth-email"></span>
-            <input
-              type="email"
-              id="inputEmail"
-              class="form-control"
-              name="email"
-              label="Contraseña"
-              placeholder="Email address"
-              autoComplete="email"
-              v-model="usuario.email"
-              required
-              autofocus
-            />
-            <input
-              type="password"
-              id="inputPassword"
-              class="form-control"
-              name="password"
-              placeholder="Password"
-              autoComplete="current-password"
-              v-model="usuario.password"
-              required
-            />
-            <div id="remember" class="checkbox">
-              <label>
-                <input type="checkbox" value="remember-me" /> Recuerdame
-              </label>
-            </div>
+          <!-- register form -->
+          <form class="form-signup" v-on:submit.prevent="register">
+            <v-container fluid>
+              <v-row>
+                <v-col cols="12">
+                  <v-text-field
+                    v-model="usuario.username"
+                    label="Username"
+                    type="text"
+                    outlined
+                    dense
+                    value=""
+                    autofocus
+                  ></v-text-field>
+                  <v-text-field
+                    v-model="usuario.email"
+                    label="Email"
+                    type="email"
+                    outlined
+                    dense
+                  ></v-text-field>
+                  <v-text-field
+                    v-model="usuario.password"
+                    label="Password"
+                    outlined
+                    type="password"
+                    dense
+                  ></v-text-field>
+                  <v-combobox
+                    v-model="usuario.role"
+                    auto-select-first
+                    :items="roles"
+                    label="Elija Roles"
+                    multiple
+                    outlined
+                    dense
+                  ></v-combobox>
+                </v-col>
+              </v-row>
+            </v-container>
             <button
-              class="btn btn-lg btn-primary btn-block btn-signin"
+              class="btn btn-lg btn-primary btn-block btn-signup"
               type="submit"
             >
-              Ingresar
+              Registrar
             </button>
           </form>
           <!-- /form -->
           <b-alert show variant="warning" v-if="error">{{ error_msg }}</b-alert>
-          <a href="#" class="forgot-password"> Olvidaste la contraseña? </a>
         </div>
         <!-- /card-container -->
       </div>
@@ -62,42 +69,27 @@
 </template>
 
 <script>
-import { Apiurl } from "../services/apiusuarios";
-import axios from "axios";
-import createStore from "../store/index";
 import { mapActions } from "vuex";
 
 export default {
-  name: "Login",
   components: {},
   data: function () {
     return {
-      usuario: { email: "", password: "" },
+      usuario: { username: "", email: "", password: "", role: "" },
       error: false,
       error_msg: "",
+      roles: ["Admin", "User", "Presupuestador"],
     };
   },
   methods: {
-    ...mapActions(["login"]),
-    /*       let user = { usuario: this.usuario, password: this.password };
-      axios.post(`${Apiurl}/api/auth/signin`, user).then((data) => {
-        
-        //este if else esta cambiado hasta que se comunique bien con el servidor
-        if (data.data.message === "Usuario o contraseña incorrecta") {
-          this.error = true;
-          this.error_msg = data.data.message;
-          this.$router.push("/home");
-        } else {
-          console.log(data.data.message);
-        }
-      }); */
+    ...mapActions(["register"]),
   },
 };
 </script>
 
 <style scoped>
 /*
- * Specific styles of signin component
+ * Specific styles of signup component
  */
 /*
  * General styles
@@ -177,17 +169,17 @@ html {
   box-sizing: border-box;
 }
 
-.form-signin #inputEmail,
-.form-signin #inputPassword {
+.form-signup #inputEmail,
+.form-signup #inputPassword {
   direction: ltr;
   height: 44px;
   font-size: 16px;
 }
 
-.form-signin input[type="email"],
-.form-signin input[type="password"],
-.form-signin input[type="text"],
-.form-signin button {
+.form-signup input[type="email"],
+.form-signup input[type="password"],
+.form-signup input[type="text"],
+.form-signup button {
   width: 100%;
   display: block;
   margin-bottom: 10px;
@@ -198,7 +190,7 @@ html {
   box-sizing: border-box;
 }
 
-.form-signin .form-control:focus {
+.form-signup .form-control:focus {
   border-color: rgb(104, 145, 162);
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
@@ -206,7 +198,7 @@ html {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(104, 145, 162);
 }
 
-.btn.btn-signin {
+.btn.btn-signup {
   /*background-color: #4d90fe; */
   background-color: rgb(104, 145, 162);
   /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
@@ -224,19 +216,9 @@ html {
   transition: all 0.218s;
 }
 
-.btn.btn-signin:hover,
-.btn.btn-signin:active,
-.btn.btn-signin:focus {
+.btn.btn-signup:hover,
+.btn.btn-signup:active,
+.btn.btn-signup:focus {
   background-color: rgb(12, 97, 33);
-}
-
-.forgot-password {
-  color: rgb(104, 145, 162);
-}
-
-.forgot-password:hover,
-.forgot-password:active,
-.forgot-password:focus {
-  color: rgb(12, 97, 33);
 }
 </style>

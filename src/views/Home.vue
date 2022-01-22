@@ -2,16 +2,16 @@
   <v-container>
     <div class="home">
       <h2>PRESENTACIÓN</h2>
-      <v-btn class="ma-2" color="indigo" outlined small @click="cotizaciones()">
+      <v-btn class="ma-2" color="indigo" outlined small @click="cotizaciones">
         COTIZACIONES
       </v-btn>
-      <v-btn class="ma-2" color="indigo" outlined small @click="presupuestos()">
+      <v-btn class="ma-2" color="indigo" outlined small @click="presupuestos">
         PRESUPUESTOS
       </v-btn>
-      <v-btn class="ma-2" color="indigo" outlined small @click="apus()">
+      <v-btn class="ma-2" color="indigo" outlined small @click="apus">
         APUS
       </v-btn>
-      <v-btn class="ma-2" color="indigo" outlined small @click="insumos()">
+      <v-btn class="ma-2" color="indigo" outlined small @click="insumos">
         INSUMOS
       </v-btn>
       <v-divider></v-divider>

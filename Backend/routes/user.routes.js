@@ -5,7 +5,7 @@ import * as usersCtrl from "../controllers/user.controller";
 import { authJwt, verifySignup } from "../middlewares";
 
 router.post(
-  "/user",
+  "/",
   [
     authJwt.verifyToken,
     authJwt.isAdmin,
@@ -13,11 +13,7 @@ router.post(
   ],
   usersCtrl.createUser
 );
-router.post(
-  "/users",
-  [authJwt.verifyToken, authJwt.isAdmin],
-  usersCtrl.getUsers
-);
+router.get("/", [authJwt.verifyToken, authJwt.isAdmin], usersCtrl.getUsers);
 router.put(
   "/update:id",
   [authJwt.verifyToken, authJwt.isAdmin],

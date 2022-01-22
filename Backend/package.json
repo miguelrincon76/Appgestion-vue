@@ -1,7 +1,8 @@
 {
   "name": "servidor",
   "version": "1.0.1",
-  "description": "Sistema Gestión Obras- Módulo de Presupuetario",
+  "author": "Miguel Angel Rincon G., Anderson Rubio",
+  "description": "Sistema Gestión Obras- Módulo de Presupuetos",
   "main": "index.js",
   "engines": {
     "node": "16.13.2",
@@ -15,7 +16,6 @@
   "keywords": [
     "backend"
   ],
-  "author": "Miguel Angel Rincon G., Anderson Rubio",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import store from "../store/index";
 
 Vue.use(VueRouter);
 
@@ -9,7 +10,16 @@ const routes = [
     name: "Login",
     components: {
       default: () =>
-        import(/* webpackChunkName: "ingreso" */ "../views/Login.vue"),
+        import(/* webpackChunkName: "ingreso" */ "../components/Login.vue"),
+      footer: () => import("../components/Footer.vue"),
+    },
+  },
+  {
+    path: "/register",
+    name: "Register",
+    components: {
+      default: () =>
+        import(/* webpackChunkName: "ingreso" */ "../components/Register.vue"),
       footer: () => import("../components/Footer.vue"),
     },
   },
@@ -21,6 +31,7 @@ const routes = [
       sidebar: () => import("../components/SideNavigation.vue"),
       footer: () => import("../components/Footer.vue"),
     },
+    meta: { requireAuth: true },
   },
   {
     path: "/presupuestos",
@@ -74,6 +85,7 @@ const routes = [
       sidebar: () => import("../components/SideNavigation.vue"),
       footer: () => import("../components/Footer.vue"),
     },
+    meta: { requireAuth: true },
   },
   {
     path: "/pruebas",
@@ -103,6 +115,15 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const protectedRoute = to.matched.some((item) => item.meta.requireAuth);
+  if (protectedRoute && localStorage.getItem("token") === null) {
+    next("/");
+  } else {
+    next();
+  }
 });
 
 export default router;

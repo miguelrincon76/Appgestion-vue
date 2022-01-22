@@ -7,7 +7,6 @@ export const createRoles = async () => {
   try {
     // Count Documents
     const count = await Role.estimatedDocumentCount();
-
     // check for existing roles
     if (count > 0) return;
     // Create default Roles
